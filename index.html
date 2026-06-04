@@ -219,7 +219,7 @@
                 <a href="https://wa.me/254768954016" target="_blank" class="btn-social whatsapp">
                     <i class="fab fa-whatsapp"></i> WA: Secondary
                 </a>
-                <a href="mailto:hillaryo0@gmail.com" class="btn-social email">
+                <a href="mailto:hillaryo040@gmail.com" class="btn-social email">
                     <i class="fas fa-envelope"></i> Send Email
                 </a>
             </div>
@@ -230,7 +230,7 @@
                     collaborations, and print distribution licenses.</p>
             </div>
 
-            <form action="https://api.web3forms.com/submit" method="POST" class="premium-form reveal">
+            <form action="https://api.web3forms.com/submit" method="POST" class="premium-form reveal" id="bookingForm">
                 <input type="hidden" name="access_key" value="8f127cc6-b4db-4aa9-949a-83dbffa88021">
 
                 <div class="input-group">
@@ -245,8 +245,11 @@
                     <label>Tell me about your project, location, or request...</label>
                     <textarea name="message" required></textarea>
                 </div>
-                <input type="hidden" name="redirect" value="https://davidotieno13827-cell.github.io/words-and-lenses/">
                 <button type="submit" class="btn-primary block-btn">Send Booking Inquiries</button>
+
+                <!-- This is the new hidden box where the alert will appear -->
+                <div id="form-result" style="display: none; text-align: center; margin-top: 20px; font-weight: 600;">
+                </div>
             </form>
 
             <div class="admin-portal reveal">
@@ -272,6 +275,47 @@
             document.querySelectorAll(".reveal").forEach((element) => {
                 observer.observe(element);
             });
+        });
+    </script>
+    <!-- WEB3FORMS NO-REDIRECT SUBMISSION SCRIPT -->
+    <script>
+        const form = document.getElementById('bookingForm');
+        const result = document.getElementById('form-result');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevents the page from redirecting
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            result.style.display = "block";
+            result.style.color = "var(--text-muted)";
+            result.innerHTML = "Sending request...";
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+                .then(async (response) => {
+                    if (response.status == 200) {
+                        result.style.color = "#25D366"; // WhatsApp Green for success
+                        result.innerHTML = "Success! Your booking request has been sent to hillaryo040@gmail.com.";
+                        form.reset(); // Clears the form boxes
+                    } else {
+                        result.style.color = "var(--accent-red)";
+                        result.innerHTML = "Oops! Something went wrong. Please try again.";
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    result.style.color = "var(--accent-red)";
+                    result.innerHTML = "Something went wrong! Check your connection.";
+                });
         });
     </script>
 </body>
