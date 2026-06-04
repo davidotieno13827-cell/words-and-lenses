@@ -1,46 +1,59 @@
-/* --- VARIABLES & AESTHETIC --- */
+/* --- PREMIUM VARIABLES --- */
 :root {
     --accent-red: #d9534f;
-    /* Updated to your original vibrant red */
-    --daraja-dark: #0b0c10;
-    --daraja-card: #15161a;
-    --daraja-border: #23252b;
-    --text-main: #f4f4f4;
-    --text-muted: #a0a3b1;
+    --accent-glow: rgba(217, 83, 79, 0.4);
+    --bg-dark: #07080a;
+    /* Deeper, richer black */
+    --bg-alt: #0d0f14;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    /* Glass card effect */
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-main: #f8f9fa;
+    --text-muted: #9aa0a6;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--daraja-dark);
+    background-color: var(--bg-dark);
     color: var(--text-main);
-    line-height: 1.6;
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 25px;
 }
 
-/* --- NAVBAR --- */
+/* --- FROSTED GLASS NAVBAR --- */
 .navbar {
-    background-color: var(--daraja-dark);
-    border-bottom: 1px solid var(--daraja-border);
+    background-color: rgba(7, 8, 10, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,13 +62,14 @@ body {
 .logo {
     font-size: 1.2rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    font-family: var(--font-heading);
 }
 
 .nav-links a {
     color: var(--text-main);
     text-decoration: none;
-    margin-left: 30px;
+    margin-left: 35px;
     font-size: 0.9rem;
     font-weight: 500;
     transition: color 0.3s;
@@ -67,269 +81,365 @@ body {
 
 .nav-btn {
     border: 1px solid var(--accent-red);
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: var(--accent-red);
+    box-shadow: 0 0 15px var(--accent-glow);
 }
 
 /* --- HERO SECTION --- */
 .hero {
-    padding: 100px 20px 80px 20px;
-    border-bottom: 1px solid var(--daraja-border);
+    padding: 120px 20px 100px 20px;
     text-align: center;
+    position: relative;
 }
 
-.hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(217, 83, 79, 0.08) 0%, transparent 60%);
+    z-index: -1;
 }
 
-.hero-content {
-    flex: 1;
-    max-width: 800px;
-}
-
-.daraja-badge {
+.premium-badge {
+    display: inline-block;
     background-color: rgba(217, 83, 79, 0.1);
     color: var(--accent-red);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
     border: 1px solid rgba(217, 83, 79, 0.3);
+    margin-bottom: 25px;
 }
 
 .hero-title {
-    font-size: 3.8rem;
-    margin: 20px 0;
+    font-size: 4.5rem;
+    margin: 0 0 30px 0;
     line-height: 1.1;
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-heading);
+    letter-spacing: -1px;
 }
 
-.hero-subtitle {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-}
-
-/* --- POEM QUOTE BOX --- */
 .poem-quote {
-    background-color: var(--daraja-card);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-left: 4px solid var(--accent-red);
-    padding: 30px;
+    padding: 35px 40px;
     margin: 40px auto;
+    max-width: 650px;
     text-align: left;
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
     color: var(--text-muted);
-    border-radius: 0 8px 8px 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .poem-author {
     display: block;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 0.85rem;
     color: var(--accent-red);
     font-weight: 600;
     font-style: normal;
-    letter-spacing: 1px;
-}
-
-/* --- BOOK VISUALS --- */
-.hero-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.book-mockup {
-    max-width: 100%;
-    height: auto;
-    max-height: 450px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-    border-radius: 4px;
+    letter-spacing: 1.5px;
+    font-family: var(--font-body);
 }
 
 /* --- BUTTONS --- */
 .btn-primary {
     background-color: var(--accent-red);
     color: #fff;
-    padding: 12px 24px;
+    padding: 14px 32px;
     text-decoration: none;
     border-radius: 4px;
     font-weight: 600;
     display: inline-block;
     border: none;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #c9302c;
-    /* A slightly darker red for the hover effect */
+    background-color: #e5605c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--accent-glow);
 }
 
 .block-btn {
     width: 100%;
     text-align: center;
     font-size: 1.1rem;
+    padding: 16px;
 }
 
 /* --- SECTIONS & TYPOGRAPHY --- */
 .section-layout {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .bg-alt {
-    background-color: #0e0f14;
-    border-top: 1px solid var(--daraja-border);
-    border-bottom: 1px solid var(--daraja-border);
+    background-color: var(--bg-alt);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    font-family: var(--font-heading);
 }
 
 .accent-text {
     color: var(--accent-red);
     font-weight: 600;
+    letter-spacing: 1px;
 }
 
-.text-link {
-    color: var(--accent-red);
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-red);
+.text-muted {
+    color: var(--text-muted);
 }
 
-/* --- BIO CONTENT --- */
-.bio-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.bio-content p {
-    margin-bottom: 20px;
+.text-column {
+    column-count: 2;
+    column-gap: 40px;
     color: var(--text-muted);
     font-size: 1.05rem;
+}
+
+.text-column p {
+    margin-bottom: 20px;
+    break-inside: avoid;
+}
+
+/* --- BOOK VISUALS --- */
+.split-layout {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.book-mockup {
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    border-radius: 6px;
+    box-shadow: 20px 30px 60px rgba(0, 0, 0, 0.8);
+    transition: transform 0.5s ease;
+}
+
+.book-mockup:hover {
+    transform: scale(1.02) rotate(-1deg);
+}
+
+.split-layout .hero-content {
+    flex: 1;
+    text-align: left;
+}
+
+.split-layout .hero-title {
+    font-size: 3.5rem;
+    margin-top: 15px;
 }
 
 /* --- PHOTOGRAPHY GALLERY GRID --- */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
-    border: 1px solid var(--daraja-border);
+    border-radius: 12px;
     aspect-ratio: 1 / 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
-/* --- DARAJA CARDS GRID --- */
-.daraja-grid {
+/* --- PREMIUM CARDS GRID --- */
+.premium-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
 }
 
-.daraja-card {
-    background-color: var(--daraja-card);
-    border: 1px solid var(--daraja-border);
-    padding: 40px 30px;
-    border-radius: 8px;
-    transition: transform 0.3s, border-color 0.3s;
+.premium-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 50px 40px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    backdrop-filter: blur(10px);
 }
 
-.daraja-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-red);
+.premium-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(217, 83, 79, 0.5);
+}
+
+.card-glow {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-red);
+    filter: blur(80px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.premium-card:hover .card-glow {
+    opacity: 0.15;
 }
 
 .card-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--accent-red);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.daraja-card h3 {
+.premium-card h3 {
+    font-size: 1.5rem;
     margin-bottom: 15px;
-    font-size: 1.3rem;
+    font-family: var(--font-heading);
 }
 
-.daraja-card p {
+.premium-card p {
     color: var(--text-muted);
+}
+
+.card-link {
+    color: var(--accent-red);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.card-link:hover {
+    transform: translateX(5px);
 }
 
 /* --- REVIEWS --- */
 .review-card {
     background-color: transparent;
-    border: 1px solid var(--daraja-border);
-    padding: 30px;
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.review-card::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    color: rgba(217, 83, 79, 0.15);
+    line-height: 1;
 }
 
 .review-text {
     font-style: italic;
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .reviewer {
     color: var(--accent-red);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
 }
 
-/* --- FORMS & SOCIAL --- */
+/* --- FORMS & CONTACT --- */
 .form-container {
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 700px;
 }
 
 .social-redirects {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .btn-social {
-    flex: 1;
+    flex: 1 1 calc(33.333% - 15px);
+    min-width: 180px;
     text-align: center;
-    padding: 15px;
-    border-radius: 4px;
+    padding: 14px;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.95rem;
     color: #fff;
-    transition: opacity 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn-social:hover {
-    opacity: 0.9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .whatsapp {
@@ -337,47 +447,47 @@ body {
 }
 
 .instagram {
-    background-color: #E1306C;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 
-.daraja-divider {
-    border: none;
-    height: 1px;
-    background-color: var(--daraja-border);
-    margin: 40px 0;
+.email {
+    background-color: #333333;
 }
 
-.daraja-form {
-    background-color: var(--daraja-card);
-    padding: 40px;
-    border-radius: 8px;
-    border: 1px solid var(--daraja-border);
+.premium-form {
+    background-color: var(--card-bg);
+    padding: 50px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
 }
 
 .input-group {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
     color: var(--text-muted);
+    font-weight: 500;
 }
 
 .input-group input,
 .input-group textarea {
     width: 100%;
-    padding: 15px;
-    background-color: var(--daraja-dark);
-    border: 1px solid var(--daraja-border);
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
     color: var(--text-main);
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
 
 .input-group textarea {
-    height: 150px;
+    height: 160px;
     resize: vertical;
 }
 
@@ -387,22 +497,84 @@ body {
     border-color: var(--accent-red);
 }
 
+/* --- ADMIN PORTAL --- */
+.admin-portal {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 50px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.admin-portal h4 {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-family: var(--font-heading);
+}
+
+.btn-admin {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.btn-admin:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- SCROLL ANIMATIONS (JAVASCRIPT TRIGGERED) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-    .hero-container {
+@media (max-width: 900px) {
+    .text-column {
+        column-count: 1;
+    }
+
+    .split-layout {
         flex-direction: column;
         text-align: center;
     }
 
+    .split-layout .hero-content {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
     .nav-links {
         display: none;
     }
 
-    .social-redirects {
-        flex-direction: column;
+    .hero-title {
+        font-size: 3rem;
     }
 
-    .hero-title {
-        font-size: 2.5rem;
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .btn-social {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .premium-form {
+        padding: 30px 20px;
     }
 }
