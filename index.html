@@ -189,13 +189,17 @@
 
             <div class="admin-portal reveal">
                 <h4>Admin Tools</h4>
-                <!-- FIXED LINK BELOW: Ensure you replace the link with a full https:// address -->
                 <a href="https://drive.google.com/drive/folders/1UfnqKbwEGXcavZ4cY7JKgAlO_dm878ZI?usp=drive_link"
                     target="_blank" class="btn-admin">
                     <i class="fas fa-cloud-upload-alt"></i> Client Media Upload Portal
                 </a>
                 <p>Secure link to upload new photos/videos for website updates.</p>
             </div>
+
+            <!-- Signature -->
+            <footer class="do-signature">
+                <p>&copy; 2026 DOsystems.co.ke</p>
+            </footer>
         </div>
     </section>
 
@@ -216,11 +220,10 @@
             result.style.display = "block";
             result.style.color = "var(--text-muted)";
             result.innerHTML = "Sending request...";
-            const formData = new FormData(form);
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(Object.fromEntries(formData))
+                body: JSON.stringify(Object.fromEntries(new FormData(form)))
             }).then(async (response) => {
                 if (response.status == 200) {
                     result.style.color = "#25D366";
