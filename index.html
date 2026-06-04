@@ -4,250 +4,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Words & Lenses | Photographer, Poet & Rider</title>
+    <title>Words & Lenses | Hillary Ominde</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap"
-        rel="stylesheet">
+    <!-- Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
 
+    <!-- DARAJA-STYLE NAVBAR -->
     <nav class="navbar">
-        <div class="logo">WORDS & LENSES</div>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Gallery</a></li>
-            <li><a href="#book">Soul & Solace</a></li>
-            <li><a href="#contact">Book Me</a></li>
-        </ul>
+        <div class="nav-container">
+            <div class="logo">WORDS & LENSES</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#initiatives">Impact</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#booking" class="nav-btn">Get in Touch</a>
+            </div>
+        </div>
     </nav>
 
-    <header id="hero" class="hero-section">
-        <div class="hero-overlay">
+    <!-- HERO SECTION (Updated to match the video's poetic focus) -->
+    <section class="hero">
+        <div class="hero-container">
             <div class="hero-content">
-                <h1>Capturing Freedom Across the Open Road</h1>
-                <p class="tagline">Freelance Photography & Written Verse</p>
+                <span class="daraja-badge">FREELANCE PHOTOGRAPHY & WRITTEN VERSE</span>
+                <h1 class="hero-title">Capturing Freedom Across The Open Road</h1>
 
-                <div class="hero-poem">
-                    <p>"The engine roars, the asphalt sings,<br>
-                        A camera captures fleeting wings.<br>
-                        In search of solace, miles we trace,<br>
-                        To find the soul inside this space."</p>
-                    <span class="poem-author">— From 'Soul and Solace'</span>
+                <!-- The Poem Quote from your Video -->
+                <div class="poem-quote">
+                    "The engine roars, the asphalt sings, <br>
+                    A camera captures fleeting wings. <br>
+                    In search of solace, miles we trace, <br>
+                    To find the soul inside this space."
+                    <span class="poem-author">— FROM "SOUL AND SOLACE"</span>
                 </div>
 
-                <a href="#portfolio" class="cta-btn">Explore the Gallery</a>
-            </div>
-        </div>
-    </header>
-
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2>The Man Behind the Lens</h2>
-            <p>A freelance photographer, concrete road enthusiast, and wordsmith. By combining the raw mechanics of
-                motorcycle travel with the delicate lens of poetry and professional photography, I bring an entirely
-                unique perspective to corporate, landscape, and street storytelling.</p>
-        </div>
-    </section>
-
-    <section id="portfolio" class="gallery-section">
-        <div class="container">
-            <h2>Photography Showcase</h2>
-            <div class="gallery-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 20px;">
-                <!-- Photo 1 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 4px; background: #111;">
-                    <img src="travel1.jpeg" alt="Showcase 1"
-                        style="width: 100%; height: 350px; object-fit: cover; display: block; transition: transform 0.3s ease;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <div class="hero-actions">
+                    <a href="#gallery" class="btn-primary">Explore The Gallery</a>
                 </div>
-
-                <!-- Photo 2 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 4px; background: #111;">
-                    <img src="travel2.jpeg" alt="Showcase 2"
-                        style="width: 100%; height: 350px; object-fit: cover; display: block; transition: transform 0.3s ease;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-
-                <!-- Photo 3 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 4px; background: #111;">
-                    <img src="travel3.jpeg" alt="Showcase 3"
-                        style="width: 100%; height: 350px; object-fit: cover; display: block; transition: transform 0.3s ease;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-                <!-- Photo 4 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 8px;">
-                    <img src="clubbing1.jpeg" alt="Showcase 4"
-                        style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.3s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-
-                <!-- Photo 5 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 8px;">
-                    <img src="clubbing2.jpeg" alt="Showcase 5"
-                        style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.3s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-
-                <!-- Photo 6 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 8px;">
-                    <img src="clubbing3.jpeg" alt="Showcase 6"
-                        style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.3s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-
-                <!-- Photo 7 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 8px;">
-                    <img src="clubbing4.jpeg" alt="Showcase 7"
-                        style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.3s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-
-                <!-- Photo 8 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 8px;">
-                    <img src="clubbing5.jpeg" alt="Showcase 8"
-                        style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.3s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-
-                <!-- Photo 9 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 8px;">
-                    <img src="clubbing6.jpeg" alt="Showcase 9"
-                        style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.3s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-
-                <!-- Photo 10 -->
-                <div class="gallery-item" style="overflow: hidden; border-radius: 8px;">
-                    <img src="clubbing7.jpeg" alt="Showcase 10"
-                        style="width: 100%; height: 350px; object-fit: cover; transition: transform 0.3s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                </div>
-            </div>
-            <!-- Reviews & Testimonials Section -->
-            <section id="reviews-section"
-                style="background: #1a1a1a; padding: 60px 20px; color: #fff; border-top: 1px solid #333;">
-                <div class="container" style="max-width: 1200px; margin: 0 auto;">
-                    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 10px; letter-spacing: 2px;">WHAT
-                        PEOPLE SAY</h2>
-                    <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-style: italic;">Reviews on the
-                        'Soul & Solace' book and photography galleries</p>
-
-                    <div class="reviews-grid"
-                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-
-                        <!-- Review 1: Focused on the Book -->
-                        <div class="review-card"
-                            style="background: #252525; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border-left: 4px solid #fff;">
-                            <p style="font-size: 1.1rem; line-height: 1.6; font-style: italic; margin-bottom: 20px;">
-                                "The poetry in 'Soul & Solace' is incredibly deep and moving. Having the built-in audio
-                                player right next to the book layout makes reading it feel like a completely immersive
-                                experience!"
-                            </p>
-                            <div class="review-author">
-                                <strong style="color: #fff; display: block;">Amani Kweli</strong>
-                                <span style="color: #777; font-size: 0.9rem;">— Book Reader</span>
-                            </div>
-                        </div>
-
-                        <!-- Review 2: Focused on the Clubbing/Nightlife Pictures -->
-                        <div class="review-card"
-                            style="background: #252525; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border-left: 4px solid #fff;">
-                            <p style="font-size: 1.1rem; line-height: 1.6; font-style: italic; margin-bottom: 20px;">
-                                "The newly uploaded clubbing and nightlife photos are absolutely insane! The way he
-                                captures the lights, energy, and raw vibe of the crowd is pure talent."
-                            </p>
-                            <div class="review-author">
-                                <strong style="color: #fff; display: block;">Chris M.</strong>
-                                <span style="color: #777; font-size: 0.9rem;">— Event Organizer</span>
-                            </div>
-                        </div>
-
-                        <!-- Review 3: Focused on the Combo (Words and Lenses) -->
-                        <div class="review-card"
-                            style="background: #252525; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border-left: 4px solid #fff;">
-                            <p style="font-size: 1.1rem; line-height: 1.6; font-style: italic; margin-bottom: 20px;">
-                                "An incredible portfolio. Seeing the balance between his raw literary mind in the poetry
-                                book and the sharp imagery in his photo galleries shows how versatile an artist Omish
-                                is."
-                            </p>
-                            <div class="review-author">
-                                <strong style="color: #fff; display: block;">Elena T.</strong>
-                                <span style="color: #777; font-size: 0.9rem;">— Creative Director</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-            <!-- Connect Section -->
-            <div class="connect-section"
-                style="text-align: center; padding: 40px 20px; background: #1a1a1a; border-radius: 8px; margin: 40px auto; max-width: 1200px;">
-                <h3
-                    style="color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 20px; font-size: 1.8rem;">
-                    Let's Connect</h3>
-                <div class="connect-buttons"
-                    style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-
-                    <!-- Instagram Button -->
-                    <a href="https://instagram.com/sir_omish_" target="_blank"
-                        style="display: inline-flex; align-items: center; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; text-decoration: none; padding: 12px 24px; border-radius: 30px; font-family: sans-serif; font-weight: bold; transition: transform 0.2s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        Instagram
-                    </a>
-
-                    <!-- WhatsApp Button -->
-                    <a href="https://wa.me/254768954016" target="_blank"
-                        style="display: inline-flex; align-items: center; background-color: #25D366; color: white; text-decoration: none; padding: 12px 24px; border-radius: 30px; font-family: sans-serif; font-weight: bold; transition: transform 0.2s;"
-                        onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        WhatsApp
-                    </a>
-
-                </div>
-            </div>
-    </section>
-
-    <section id="book" class="book-section">
-        <div class="container book-container">
-            <div class="book-mockup">
-                <div class="cover-art">
-                    <img src="soul.jpeg" alt="Soul and Solace Cover"
-                        style="width: 100%; height: 100%; object-fit: cover;">
-                    <h3>SOUL<br>&<br>SOLACE</h3>
-                    <p>Poems from the Highway</p>
-                </div>
-            </div>
-            <div class="book-details">
-                <span class="badge">New Release</span>
-                <h2>Soul & Solace</h2>
-                <p class="book-description">An anthology of raw, moving poetry captured while chasing horizons on two
-                    wheels. A perfect companion piece for dreamers, thinkers, and those who find peace in movement.</p>
-                <a href="#" class="buy-btn">Order Copy Globally</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <!-- ABOUT SECTION (Updated Title) -->
+    <section id="about" class="section-layout bg-alt">
         <div class="container">
-            <h2>Let's Collaborate</h2>
-            <p>Available worldwide for freelance photography bookings, creative writing collaborations, and print
-                distribution licenses.</p>
+            <div class="section-header">
+                <h2>The Man Behind The Lens</h2>
+                <p class="accent-text">Storyteller. Filmmaker. Author. Humanitarian.</p>
+            </div>
 
-            <form class="contact-form"
-                onsubmit="event.preventDefault(); alert('Message sent! (Integration setup required)');">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email Address" required>
-                <textarea rows="5" placeholder="Tell me about your project, location, or request..."
-                    required></textarea>
-                <button type="submit" class="submit-btn">Send Booking Inquiries</button>
+            <div class="bio-content">
+                <p>My name is Hillary Ominde, a passionate storyteller, filmmaker, author, youth empowerment advocate,
+                    and humanitarian dedicated to creating meaningful impact through media, education, and community
+                    service.</p>
+
+                <p>I am the author of <strong>Soul & Solace</strong>, a book that explores personal growth, resilience,
+                    healing, and the transformative power of hope. Through my writing, I seek to inspire individuals to
+                    embrace their journeys and discover purpose even in challenging circumstances.</p>
+
+                <p>My professional journey spans filmmaking, videography, content creation, production management, event
+                    organization, digital marketing, customer relations, and talent management. Over the years, I have
+                    worked with organizations, ministries, media productions, podcasts, and community initiatives across
+                    different sectors, helping bring stories to life through visual storytelling and strategic
+                    communication.</p>
+
+                <p>As a filmmaker and freelance videographer, I specialize in documenting authentic human experiences,
+                    social impact projects, community initiatives, and inspiring personal stories. My work combines
+                    creativity with purpose, ensuring that every story not only informs but also inspires action.</p>
+
+                <p>Beyond media, I am deeply committed to community development and youth empowerment. I have actively
+                    supported educational initiatives for underprivileged children in Bomet County, advocating for
+                    access to quality education and opportunities for vulnerable communities. My passion for social
+                    impact has also seen me participate in various charitable activities aimed at uplifting lives and
+                    empowering future generations.</p>
+
+                <p>I serve as a Child Rights Ambassador and remain actively involved in advocacy efforts that promote
+                    the well-being, protection, and empowerment of children and young people.</p>
+
+                <p>My diverse experience also includes serving as a Production Manager, Podcast Studio Volunteer, Tour
+                    Guide, Travel Blogger, Chauffeur, and Event Organizer. These roles have strengthened my ability to
+                    connect with people from different backgrounds, manage complex projects, and build meaningful
+                    relationships across communities.</p>
+
+                <p>Through my NGO initiative, <strong>Transform Kenya</strong>, I continue to champion sustainable
+                    community development, youth empowerment, storytelling, and social transformation. My vision is to
+                    use media, education, and advocacy as tools to inspire positive change and create opportunities for
+                    those who need them most.</p>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="section-layout">
+        <div class="container">
+            <div class="section-header">
+                <h2>Photography Showcase</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Your uploaded photos -->
+                <div class="gallery-item"><img src="c1.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="c2.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="c3.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="c4.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="c5.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="c6.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="c8.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="c9.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="clubbing1.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="clubbing2.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="clubbing3.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="clubbing4.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="clubbing5.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="clubbing6.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="clubbing7.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="travel1.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="travel2.jpeg" alt="Portfolio Image"></div>
+                <div class="gallery-item"><img src="travel3.jpeg" alt="Portfolio Image"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- BOOK PROMO SECTION (Kept Daraja aesthetics) -->
+    <section id="book" class="section-layout bg-alt">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-visual">
+                    <img src="soulandsolace.jpeg" alt="Soul & Solace Book Cover" class="book-mockup">
+                </div>
+                <div class="hero-content">
+                    <span class="daraja-badge">NEW RELEASE</span>
+                    <h2 class="hero-title" style="margin-top: 15px; font-size: 2.5rem;">Soul & Solace</h2>
+                    <p class="hero-subtitle">An anthology of raw, moving poetry captured while chasing horizons on two
+                        wheels. A perfect companion piece for dreamers, thinkers, and those who find peace in movement.
+                    </p>
+                    <a href="#booking" class="btn-primary">Order Global Copy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DARAJA-STYLE EXPERTISE GRIDS -->
+    <section id="initiatives" class="section-layout">
+        <div class="container">
+            <div class="section-header">
+                <h2>Areas of Impact</h2>
+                <p class="accent-text">Inspired by global platforms like <a
+                        href="https://wanderingwomeninternational.com/" target="_blank" class="text-link">Wandering
+                        Women International</a>.</p>
+            </div>
+
+            <div class="daraja-grid">
+                <div class="daraja-card">
+                    <i class="fas fa-video card-icon"></i>
+                    <h3>Filmmaking & Media</h3>
+                    <p>Specializing in videography, content creation, and documenting authentic human experiences and
+                        social impact projects.</p>
+                </div>
+                <div class="daraja-card">
+                    <i class="fas fa-globe-africa card-icon"></i>
+                    <h3>Humanitarian Work</h3>
+                    <p>Serving as a Child Rights Ambassador and actively supporting educational initiatives for
+                        underprivileged children.</p>
+                </div>
+                <div class="daraja-card">
+                    <i class="fas fa-hands-helping card-icon"></i>
+                    <h3>Transform Kenya</h3>
+                    <p>Championing sustainable community development, youth empowerment, and grassroots storytelling
+                        through NGO initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION (Updated Title) -->
+    <section id="reviews" class="section-layout bg-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>What People Say</h2>
+            </div>
+            <div class="daraja-grid">
+                <div class="review-card">
+                    <p class="review-text">"An incredible journey of surrender and healing. The poetry resonates deeply
+                        with anyone chasing horizons."</p>
+                    <h4 class="reviewer">- David Otieno</h4>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">"Capturing raw emotion while on two wheels—this book represents the peace
+                        found in movement and deep reflection."</p>
+                    <h4 class="reviewer">- Ominde Hillary</h4>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">"A beautifully crafted anthology. The imagery in the words perfectly
+                        complements the soul of the journey."</p>
+                    <h4 class="reviewer">- Sandra</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & SOCIAL REDIRECTS (Updated Titles) -->
+    <section id="booking" class="section-layout">
+        <div class="container form-container">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+            </div>
+
+            <!-- SOCIAL REDIRECT BUTTONS -->
+            <div class="social-redirects">
+                <a href="https://instagram.com/sir_omish" target="_blank" class="btn-social instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://wa.me/254745005497" target="_blank" class="btn-social whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+
+            <hr class="daraja-divider">
+
+            <div class="section-header" style="margin-top: 40px;">
+                <h2>Let's Collaborate</h2>
+                <p>Available worldwide for freelance photography bookings, creative writing collaborations, and print
+                    distribution licenses.</p>
+            </div>
+
+            <!-- WEB3FORMS INTEGRATION -->
+            <form action="https://api.web3forms.com/submit" method="POST" class="daraja-form">
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+
+                <div class="input-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label>Your Email Address</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="input-group">
+                    <label>Tell me about your project, location, or request...</label>
+                    <textarea name="message" required></textarea>
+                </div>
+                <input type="hidden" name="redirect" value="https://davidotieno13827-cell.github.io/words-and-lenses/">
+                <button type="submit" class="btn-primary block-btn">Send Booking Inquiries</button>
             </form>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Words & Lenses. Built with passion by David Otieno.</p>
-    </footer>
 
 </body>
 
