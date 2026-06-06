@@ -22,7 +22,15 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preload" href="afrostate.mp4" as="video">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=7">
+    <script>
+        (function () {
+            if (!location.search.includes('cachebust')) {
+                var separator = location.search ? '&' : '?';
+                location.replace(location.href + separator + 'cachebust=1');
+            }
+        })();
+    </script>
 </head>
 
 <body>
@@ -66,7 +74,6 @@
                     To find the soul inside this space."
                     <span class="poem-author">— FROM "SOUL AND SOLACE"</span>
                 </div>
-                <div class="site-update-note">Live GitHub Pages version — refreshed now (v6)</div>
             </div>
         </div>
     </section>
