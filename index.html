@@ -59,7 +59,7 @@
     <section class="hero reveal">
         <div class="hero-container">
             <div class="hero-video-wrapper" aria-hidden="true">
-                <video class="hero-bg-video" autoplay muted loop playsinline preload="auto">
+                <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" poster="soulandsolace.jpeg">
                     <source src="afrostate.mp4" type="video/mp4">
                 </video>
             </div>
@@ -474,6 +474,16 @@
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+            const heroVideo = document.querySelector('.hero-bg-video');
+            if (heroVideo) {
+                heroVideo.setAttribute('muted', '');
+                heroVideo.setAttribute('playsinline', '');
+                heroVideo.load();
+                heroVideo.play().catch(() => {
+                    // autoplay may be blocked on some devices; keep the poster visible until it can play
+                });
+            }
 
             const gallerySection = document.getElementById('gallery');
             const gallerySlides = gallerySection.querySelectorAll('.gallery-slide');

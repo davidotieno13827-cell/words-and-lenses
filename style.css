@@ -180,6 +180,7 @@ body {
     inset: 0;
     z-index: 0;
     overflow: hidden;
+    background-color: #000;
 }
 
 .hero-bg-video {
