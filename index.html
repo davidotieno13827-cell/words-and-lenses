@@ -45,6 +45,18 @@
 
 <body>
 
+    <div id="top-interstitial" class="top-interstitial" role="dialog" aria-live="polite"
+        aria-label="Site update available">
+        <div class="top-interstitial-inner container">
+            <div class="interstitial-text">Live v8 is available — press <strong>Reload</strong> to view latest changes.
+            </div>
+            <div class="interstitial-actions">
+                <button id="interstitial-reload" class="btn-primary">Reload</button>
+                <button id="interstitial-dismiss" class="btn-secondary">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">WORDS & LENSES</div>
@@ -473,7 +485,7 @@
 
             <footer class="do-signature">
                 <p>&copy; 2026 DOsystems.co.ke</p>
-                <p class="page-version">Live site version 7</p>
+                <p class="page-version">Live site version 8</p>
             </footer>
         </div>
     </section>
@@ -633,6 +645,36 @@
 
             updateGalleryStatus();
             updateVideoStatus();
+
+            // Top interstitial: reload / dismiss behaviour
+            (function () {
+                const interstitial = document.getElementById('top-interstitial');
+                const reloadBtn = document.getElementById('interstitial-reload');
+                const dismissBtn = document.getElementById('interstitial-dismiss');
+                try {
+                    const prev = parseInt(localStorage.getItem('dismissedInterstitial') || '0', 10) || 0;
+                    if (Date.now() - prev < (10 * 60 * 1000)) {
+                        interstitial && interstitial.classList.add('hidden');
+                    }
+                } catch (e) { /* ignore */ }
+
+                if (!interstitial) return;
+                // auto-hide after a short delay so it doesn't block UX
+                const autoHide = setTimeout(() => interstitial.classList.add('hidden'), 8000);
+
+                reloadBtn && reloadBtn.addEventListener('click', function () {
+                    try { localStorage.removeItem('dismissedInterstitial'); } catch (e) { }
+                    const url = new URL(location.href);
+                    url.searchParams.set('cachebust', Date.now());
+                    location.href = url.toString();
+                });
+
+                dismissBtn && dismissBtn.addEventListener('click', function () {
+                    interstitial.classList.add('hidden');
+                    try { localStorage.setItem('dismissedInterstitial', Date.now()); } catch (e) { }
+                    clearTimeout(autoHide);
+                });
+            })();
         });
 
         const form = document.getElementById('bookingForm');

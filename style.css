@@ -235,6 +235,66 @@ body {
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 }
 
+/* --- TOP INTERSTITIAL BANNER --- */
+.top-interstitial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1500;
+    background: linear-gradient(90deg, rgba(7, 8, 10, 0.98), rgba(12, 12, 12, 0.95));
+    color: #fff;
+    padding: 12px 0;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+    transform: translateY(0);
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.top-interstitial.hidden {
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.top-interstitial-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.interstitial-text {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.interstitial-actions button {
+    min-width: 100px;
+    padding: 8px 14px;
+    font-weight: 700;
+}
+
+.top-interstitial .btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .top-interstitial-inner {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+
+    .interstitial-actions {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+}
+
 .poem-quote {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
