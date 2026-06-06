@@ -180,8 +180,9 @@
                 <h2>Video Library</h2>
                 <p class="accent-text">Watch Omish's film stories, spoken word, and creative collaborations.</p>
             </div>
-            <div class="video-grid">
-                <article class="video-card reveal">
+            <div class="video-slider reveal" id="video-carousel" role="region" aria-roledescription="carousel"
+                aria-label="Video showcase" tabindex="0">
+                <div class="video-slide active" data-index="0" aria-hidden="false">
                     <div class="video-preview">
                         <div class="video-icon"><i class="fas fa-play"></i></div>
                     </div>
@@ -189,8 +190,8 @@
                         <h3>Travel Storytelling</h3>
                         <p>A visual journey through creative locations and everyday moments.</p>
                     </div>
-                </article>
-                <article class="video-card reveal">
+                </div>
+                <div class="video-slide" data-index="1" aria-hidden="true">
                     <div class="video-preview">
                         <div class="video-icon"><i class="fas fa-play"></i></div>
                     </div>
@@ -198,8 +199,8 @@
                         <h3>Poetry in Motion</h3>
                         <p>Watch Omish perform his spoken word pieces with cinematic visuals.</p>
                     </div>
-                </article>
-                <article class="video-card reveal">
+                </div>
+                <div class="video-slide" data-index="2" aria-hidden="true">
                     <div class="video-preview">
                         <div class="video-icon"><i class="fas fa-play"></i></div>
                     </div>
@@ -207,8 +208,8 @@
                         <h3>Community Projects</h3>
                         <p>See the impact stories from Transform Kenya and youth empowerment events.</p>
                     </div>
-                </article>
-                <article class="video-card reveal">
+                </div>
+                <div class="video-slide" data-index="3" aria-hidden="true">
                     <div class="video-preview">
                         <div class="video-icon"><i class="fas fa-play"></i></div>
                     </div>
@@ -216,7 +217,24 @@
                         <h3>Creative Collaborations</h3>
                         <p>Highlights from projects created with Wandering Women International.</p>
                     </div>
-                </article>
+                </div>
+            </div>
+            <div class="gallery-status video-status" aria-live="polite">Video 1 of 4</div>
+            <div class="gallery-controls">
+                <button type="button" class="gallery-btn btn-secondary video-btn" data-action="prev"
+                    aria-label="Previous video" aria-controls="video-carousel">Previous</button>
+                <button type="button" class="gallery-btn btn-primary video-btn" data-action="next"
+                    aria-label="Next video" aria-controls="video-carousel">Next</button>
+            </div>
+            <div class="gallery-indicators video-indicators" role="tablist" aria-label="Select video">
+                <button type="button" class="gallery-indicator active video-indicator" data-index="0" role="tab"
+                    aria-selected="true" aria-controls="video-carousel" aria-label="View video 1">1</button>
+                <button type="button" class="gallery-indicator video-indicator" data-index="1" role="tab"
+                    aria-selected="false" aria-controls="video-carousel" aria-label="View video 2">2</button>
+                <button type="button" class="gallery-indicator video-indicator" data-index="2" role="tab"
+                    aria-selected="false" aria-controls="video-carousel" aria-label="View video 3">3</button>
+                <button type="button" class="gallery-indicator video-indicator" data-index="3" role="tab"
+                    aria-selected="false" aria-controls="video-carousel" aria-label="View video 4">4</button>
             </div>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="videos.html" class="btn-primary">View All Videos</a>
@@ -442,8 +460,8 @@
             document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
             const gallerySlides = document.querySelectorAll('.gallery-slide');
-            const galleryButtons = document.querySelectorAll('.gallery-btn');
-            const galleryIndicators = document.querySelectorAll('.gallery-indicator');
+            const galleryButtons = document.querySelectorAll('.gallery-slider .gallery-btn');
+            const galleryIndicators = document.querySelectorAll('.gallery-slider .gallery-indicator');
             let currentGalleryIndex = 0;
 
             const galleryStatus = document.querySelector('.gallery-status');
@@ -506,6 +524,60 @@
                 });
             });
 
+            const videoSlides = document.querySelectorAll('.video-slide');
+            const videoButtons = document.querySelectorAll('.video-btn');
+            const videoIndicators = document.querySelectorAll('.video-indicator');
+            let currentVideoIndex = 0;
+            const videoStatus = document.querySelector('.video-status');
+            const videoSlider = document.querySelector('.video-slider');
+
+            const updateVideoStatus = () => {
+                if (!videoStatus || !videoSlides.length) return;
+                videoStatus.textContent = `Video ${currentVideoIndex + 1} of ${videoSlides.length}`;
+            };
+
+            const setVideoSlide = (index) => {
+                if (!videoSlides.length) return;
+                currentVideoIndex = ((index % videoSlides.length) + videoSlides.length) % videoSlides.length;
+                videoSlides.forEach((slide, i) => {
+                    const active = i === currentVideoIndex;
+                    slide.classList.toggle('active', active);
+                    slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+                });
+                videoIndicators.forEach((button, i) => {
+                    const active = i === currentVideoIndex;
+                    button.classList.toggle('active', active);
+                    button.setAttribute('aria-selected', active ? 'true' : 'false');
+                });
+                updateVideoStatus();
+            };
+
+            videoButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const action = button.dataset.action;
+                    setVideoSlide(currentVideoIndex + (action === 'next' ? 1 : -1));
+                });
+            });
+
+            videoIndicators.forEach((button) => {
+                button.addEventListener('click', () => {
+                    setVideoSlide(Number(button.dataset.index));
+                });
+            });
+
+            if (videoSlider) {
+                videoSlider.addEventListener('keydown', (event) => {
+                    if (event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        setVideoSlide(currentVideoIndex + 1);
+                    }
+                    if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        setVideoSlide(currentVideoIndex - 1);
+                    }
+                });
+            }
+
             if (gallerySlider) {
                 gallerySlider.addEventListener('keydown', (event) => {
                     if (event.key === 'ArrowRight') {
@@ -520,6 +592,7 @@
             }
 
             updateGalleryStatus();
+            updateVideoStatus();
         });
 
         const form = document.getElementById('bookingForm');
