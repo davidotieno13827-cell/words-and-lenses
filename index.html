@@ -22,7 +22,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preload" href="afrostate.mp4" as="video">
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
 </head>
 
 <body>
@@ -209,8 +209,8 @@
                         <div class="video-icon"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="video-info">
-                        <h3>Travel Storytelling</h3>
-                        <p>A visual journey through creative locations and everyday moments.</p>
+                        <h3>Afrostate Ride</h3>
+                        <p>A cinematic journey through movement, sound, and the road ahead.</p>
                     </div>
                 </div>
                 <div class="video-slide" data-index="1" aria-hidden="true">
@@ -219,7 +219,7 @@
                     </div>
                     <div class="video-info">
                         <h3>Poetry in Motion</h3>
-                        <p>Watch Omish perform his spoken word pieces with cinematic visuals.</p>
+                        <p>Watch Omish perform spoken word pieces with cinematic visuals.</p>
                     </div>
                 </div>
                 <div class="video-slide" data-index="2" aria-hidden="true">
@@ -227,8 +227,8 @@
                         <div class="video-icon"><i class="fas fa-play"></i></div>
                     </div>
                     <div class="video-info">
-                        <h3>Community Projects</h3>
-                        <p>See the impact stories from Transform Kenya and youth empowerment events.</p>
+                        <h3>PIM Impact</h3>
+                        <p>Documentary-style storytelling highlighting community and creative purpose.</p>
                     </div>
                 </div>
                 <div class="video-slide" data-index="3" aria-hidden="true">
@@ -237,11 +237,20 @@
                     </div>
                     <div class="video-info">
                         <h3>Creative Collaborations</h3>
-                        <p>Highlights from projects created with Wandering Women International.</p>
+                        <p>Highlights from projects created with Wandering Women International and local teams.</p>
+                    </div>
+                </div>
+                <div class="video-slide" data-index="4" aria-hidden="true">
+                    <div class="video-preview">
+                        <div class="video-icon"><i class="fas fa-plus"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>More videos coming soon</h3>
+                        <p>Space reserved for the next story — add another title here when ready.</p>
                     </div>
                 </div>
             </div>
-            <div class="gallery-status video-status" aria-live="polite">Video 1 of 4</div>
+            <div class="gallery-status video-status" aria-live="polite">Video 1 of 5</div>
             <div class="gallery-controls">
                 <button type="button" class="gallery-btn btn-secondary video-btn" data-action="prev"
                     aria-label="Previous video" aria-controls="video-carousel">Previous</button>
@@ -257,6 +266,8 @@
                     aria-selected="false" aria-controls="video-carousel" aria-label="View video 3">3</button>
                 <button type="button" class="gallery-indicator video-indicator" data-index="3" role="tab"
                     aria-selected="false" aria-controls="video-carousel" aria-label="View video 4">4</button>
+                <button type="button" class="gallery-indicator video-indicator" data-index="4" role="tab"
+                    aria-selected="false" aria-controls="video-carousel" aria-label="View video 5">5</button>
             </div>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="videos.html" class="btn-primary">View All Videos</a>
@@ -468,7 +479,7 @@
 
             <footer class="do-signature">
                 <p>&copy; 2026 DOsystems.co.ke</p>
-                <p class="page-version">Live site version 9</p>
+                <p class="page-version">Live site version 10</p>
             </footer>
         </div>
     </section>
@@ -629,7 +640,7 @@
             updateGalleryStatus();
             updateVideoStatus();
 
-            const UPDATE_MARKER = 'Live site version 9';
+            const UPDATE_MARKER = 'Live site version 10';
             const REMOTE_INDEX = 'https://raw.githubusercontent.com/davidotieno13827-cell/words-and-lenses/main/index.html';
             const interstitial = document.getElementById('top-interstitial');
             const reloadBtn = document.getElementById('interstitial-reload');
