@@ -96,17 +96,92 @@
         <div class="container">
             <div class="section-header reveal">
                 <h2>Photography Showcase</h2>
+                <p class="accent-text">Large images, clear captions, and arrow-key navigation help reduce eye strain.
+                </p>
+                <p class="gallery-help" id="gallery-help">Use the large buttons, arrow keys, or high-contrast mode to
+                    move between images.</p>
+                <div class="gallery-access-actions">
+                    <button type="button" class="contrast-toggle btn-secondary" id="contrastToggle"
+                        aria-pressed="false">
+                        Enable high contrast view
+                    </button>
+                    <button type="button" class="textlist-toggle btn-secondary" id="textListToggle"
+                        aria-expanded="false">
+                        Show text-only gallery list
+                    </button>
+                </div>
             </div>
-            <!-- Featured 6 Images Only -->
-            <div class="gallery-grid">
-                <div class="gallery-item reveal"><img src="c1.jpeg" alt="Portfolio Image"></div>
-                <div class="gallery-item reveal"><img src="c2.jpeg" alt="Portfolio Image"></div>
-                <div class="gallery-item reveal"><img src="c3.jpeg" alt="Portfolio Image"></div>
-                <div class="gallery-item reveal"><img src="c4.jpeg" alt="Portfolio Image"></div>
-                <div class="gallery-item reveal"><img src="c5.jpeg" alt="Portfolio Image"></div>
-                <div class="gallery-item reveal"><img src="c6.jpeg" alt="Portfolio Image"></div>
+            <div class="gallery-text-list" id="galleryTextList" hidden aria-hidden="true" aria-live="polite">
+                <p class="gallery-text-intro">Choose an image from the list below to view it one at a time.</p>
+                <ul>
+                    <li><button type="button" class="gallery-text-btn" data-index="0">Image 1: Traveler portrait at
+                            sunrise</button></li>
+                    <li><button type="button" class="gallery-text-btn" data-index="1">Image 2: Vibrant roadside
+                            scene</button></li>
+                    <li><button type="button" class="gallery-text-btn" data-index="2">Image 3: Rider silhouette against
+                            the sky</button></li>
+                    <li><button type="button" class="gallery-text-btn" data-index="3">Image 4: Everyday community
+                            life</button></li>
+                    <li><button type="button" class="gallery-text-btn" data-index="4">Image 5: Close-up expressive
+                            portrait</button></li>
+                    <li><button type="button" class="gallery-text-btn" data-index="5">Image 6: Wide horizon
+                            landscape</button></li>
+                </ul>
             </div>
-            <!-- Button added to lead to full archive -->
+            <div class="gallery-slider reveal" id="gallery-carousel" role="region" aria-roledescription="carousel"
+                aria-label="Photography showcase" aria-describedby="gallery-help" tabindex="0">
+                <div class="gallery-slide active" id="gallery-slide-0" data-index="0" aria-hidden="false">
+                    <img src="c1.jpeg" alt="Portrait of a traveler in a warm landscape at sunrise">
+                    <p class="gallery-caption" aria-live="polite">A portrait full of warmth and movement from the open
+                        road.</p>
+                </div>
+                <div class="gallery-slide" id="gallery-slide-1" data-index="1" aria-hidden="true">
+                    <img src="c2.jpeg" alt="Vibrant roadside scene with people and colorful details">
+                    <p class="gallery-caption" aria-live="polite">A gentle street moment with clear composition and
+                        bright tones.</p>
+                </div>
+                <div class="gallery-slide" id="gallery-slide-2" data-index="2" aria-hidden="true">
+                    <img src="c3.jpeg" alt="Silhouette of a rider captured against dramatic sky">
+                    <p class="gallery-caption" aria-live="polite">A high-contrast capture of travel and motion for
+                        strong visual clarity.</p>
+                </div>
+                <div class="gallery-slide" id="gallery-slide-3" data-index="3" aria-hidden="true">
+                    <img src="c4.jpeg" alt="Warm documentary photo showing everyday community life">
+                    <p class="gallery-caption" aria-live="polite">A calm community scene designed for easy viewing and
+                        focus.</p>
+                </div>
+                <div class="gallery-slide" id="gallery-slide-4" data-index="4" aria-hidden="true">
+                    <img src="c5.jpeg" alt="Close-up portrait with expressive emotion and soft detail">
+                    <p class="gallery-caption" aria-live="polite">A close-up with clear facial detail and gentle
+                        contrast.</p>
+                </div>
+                <div class="gallery-slide" id="gallery-slide-5" data-index="5" aria-hidden="true">
+                    <img src="c6.jpeg" alt="Landscape showing movement, sky and horizon in a single frame">
+                    <p class="gallery-caption" aria-live="polite">A wide horizon shot with easy focus for clearer
+                        viewing.</p>
+                </div>
+            </div>
+            <div class="gallery-status" aria-live="polite">Image 1 of 6</div>
+            <div class="gallery-controls">
+                <button type="button" class="gallery-btn btn-secondary" data-action="prev" aria-label="Previous image"
+                    aria-controls="gallery-carousel">Previous</button>
+                <button type="button" class="gallery-btn btn-primary" data-action="next" aria-label="Next image"
+                    aria-controls="gallery-carousel">Next</button>
+            </div>
+            <div class="gallery-indicators" role="tablist" aria-label="Select gallery image">
+                <button type="button" class="gallery-indicator active" data-index="0" role="tab" aria-selected="true"
+                    aria-controls="gallery-slide-0" aria-label="View image 1">1</button>
+                <button type="button" class="gallery-indicator" data-index="1" role="tab" aria-selected="false"
+                    aria-controls="gallery-slide-1" aria-label="View image 2">2</button>
+                <button type="button" class="gallery-indicator" data-index="2" role="tab" aria-selected="false"
+                    aria-controls="gallery-slide-2" aria-label="View image 3">3</button>
+                <button type="button" class="gallery-indicator" data-index="3" role="tab" aria-selected="false"
+                    aria-controls="gallery-slide-3" aria-label="View image 4">4</button>
+                <button type="button" class="gallery-indicator" data-index="4" role="tab" aria-selected="false"
+                    aria-controls="gallery-slide-4" aria-label="View image 5">5</button>
+                <button type="button" class="gallery-indicator" data-index="5" role="tab" aria-selected="false"
+                    aria-controls="gallery-slide-5" aria-label="View image 6">6</button>
+            </div>
             <div style="text-align: center; margin-top: 40px;">
                 <a href="pictorials.html" class="btn-primary">View All Pictorials</a>
             </div>
@@ -230,18 +305,18 @@
                     <p class="review-text">“Hillary's work brings a powerful sense of humanity and adventure. The book
                         is poetic,
                         honest, and beautifully crafted.”</p>
-                    <p class="reviewer">— Amina K.</p>
+                    <p class="reviewer">— Sandra</p>
                 </article>
                 <article class="review-card reveal">
                     <p class="review-text">“The photography and words together tell a story that stays with you long
                         after
                         the page is closed.”</p>
-                    <p class="reviewer">— Joseph M.</p>
+                    <p class="reviewer">— Hillary Ominde</p>
                 </article>
                 <article class="review-card reveal">
                     <p class="review-text">“Easy booking and payment support made ordering the book simple and
                         reliable.”</p>
-                    <p class="reviewer">— Faith W.</p>
+                    <p class="reviewer">— David Otieno</p>
                 </article>
             </div>
         </div>
@@ -408,6 +483,108 @@
                 });
             }, { threshold: 0.1 });
             document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+            const gallerySlides = document.querySelectorAll('.gallery-slide');
+            const galleryButtons = document.querySelectorAll('.gallery-btn');
+            const galleryIndicators = document.querySelectorAll('.gallery-indicator');
+            let currentGalleryIndex = 0;
+
+            const galleryStatus = document.querySelector('.gallery-status');
+            const gallerySlider = document.querySelector('.gallery-slider');
+            const contrastToggle = document.getElementById('contrastToggle');
+            const textListToggle = document.getElementById('textListToggle');
+            const textListPanel = document.getElementById('galleryTextList');
+            const textListButtons = document.querySelectorAll('.gallery-text-btn');
+
+            const updateGalleryStatus = () => {
+                if (!galleryStatus || !gallerySlides.length) return;
+                galleryStatus.textContent = `Image ${currentGalleryIndex + 1} of ${gallerySlides.length}`;
+            };
+
+            const setGallerySlide = (index) => {
+                if (!gallerySlides.length) return;
+                currentGalleryIndex = ((index % gallerySlides.length) + gallerySlides.length) % gallerySlides.length;
+                gallerySlides.forEach((slide, i) => {
+                    const active = i === currentGalleryIndex;
+                    slide.classList.toggle('active', active);
+                    slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+                });
+                galleryIndicators.forEach((button, i) => {
+                    const active = i === currentGalleryIndex;
+                    button.classList.toggle('active', active);
+                    button.setAttribute('aria-selected', active ? 'true' : 'false');
+                });
+                updateGalleryStatus();
+            };
+
+            const setContrastMode = (enabled) => {
+                document.body.classList.toggle('high-contrast', enabled);
+                if (contrastToggle) {
+                    contrastToggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+                    contrastToggle.textContent = enabled ? 'Disable high contrast view' : 'Enable high contrast view';
+                }
+                try {
+                    localStorage.setItem('highContrastMode', enabled ? 'true' : 'false');
+                } catch (error) {
+                    // ignore localStorage errors in private browsing modes
+                }
+            };
+
+            if (contrastToggle) {
+                contrastToggle.addEventListener('click', () => {
+                    setContrastMode(!document.body.classList.contains('high-contrast'));
+                });
+            }
+
+            if (textListToggle && textListPanel) {
+                textListToggle.addEventListener('click', () => {
+                    const show = textListPanel.hidden;
+                    textListPanel.hidden = !show;
+                    textListPanel.setAttribute('aria-hidden', show ? 'false' : 'true');
+                    textListToggle.setAttribute('aria-expanded', show ? 'true' : 'false');
+                    textListToggle.textContent = show ? 'Hide text-only gallery list' : 'Show text-only gallery list';
+                    if (show) {
+                        textListPanel.querySelector('button')?.focus();
+                    }
+                });
+            }
+
+            textListButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    setGallerySlide(Number(button.dataset.index));
+                });
+            });
+
+            const savedContrast = window.localStorage?.getItem('highContrastMode') === 'true';
+            setContrastMode(savedContrast);
+
+            galleryButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const action = button.dataset.action;
+                    setGallerySlide(currentGalleryIndex + (action === 'next' ? 1 : -1));
+                });
+            });
+
+            galleryIndicators.forEach((button) => {
+                button.addEventListener('click', () => {
+                    setGallerySlide(Number(button.dataset.index));
+                });
+            });
+
+            if (gallerySlider) {
+                gallerySlider.addEventListener('keydown', (event) => {
+                    if (event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        setGallerySlide(currentGalleryIndex + 1);
+                    }
+                    if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        setGallerySlide(currentGalleryIndex - 1);
+                    }
+                });
+            }
+
+            updateGalleryStatus();
         });
 
         const form = document.getElementById('bookingForm');
