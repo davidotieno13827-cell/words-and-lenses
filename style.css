@@ -374,20 +374,24 @@ body {
 
 .about-section {
     position: relative;
-    background-image: url('thepoet.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: transparent;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
 }
 
 .about-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: transparent;
-    z-index: 1;
+    background-image: url('thepoet.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.02);
+    filter: brightness(1.12) saturate(1.15);
+    -webkit-filter: brightness(1.12) saturate(1.15);
+    z-index: 0;
 }
 
 .about-section::after {
@@ -417,14 +421,6 @@ body {
 }
 
 @media (max-width: 900px) {
-    .about-section::before {
-        background: transparent;
-    }
-
-    .about-section::after {
-        background: transparent;
-    }
-
     .about-section .text-column {
         background: transparent;
     }
