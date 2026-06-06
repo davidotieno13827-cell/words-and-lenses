@@ -218,18 +218,6 @@
                 </div>
                 <div class="video-slide" data-index="1" aria-hidden="true">
                     <div class="video-preview">
-                        <video controls preload="metadata" playsinline poster="thumb2.jpg">
-                            <source src="afrostate - Copy.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <h3>Poetry in Motion</h3>
-                        <p>Watch Omish perform spoken word pieces with cinematic visuals.</p>
-                    </div>
-                </div>
-                <div class="video-slide" data-index="2" aria-hidden="true">
-                    <div class="video-preview">
                         <video controls preload="metadata" playsinline poster="thumb1.jpg">
                             <source src="PIM.mp4" type="video/mp4">
                             Your browser does not support the video tag.
@@ -240,7 +228,7 @@
                         <p>Documentary-style storytelling highlighting community and creative purpose.</p>
                     </div>
                 </div>
-                <div class="video-slide" data-index="3" aria-hidden="true">
+                <div class="video-slide" data-index="2" aria-hidden="true">
                     <div class="video-preview">
                         <video controls preload="metadata" playsinline poster="thumb2.jpg">
                             <source src="creativecollaborations (1).mp4" type="video/mp4">
@@ -252,7 +240,7 @@
                         <p>Highlights from projects created with Wandering Women International and local teams.</p>
                     </div>
                 </div>
-                <div class="video-slide" data-index="4" aria-hidden="true">
+                <div class="video-slide" data-index="3" aria-hidden="true">
                     <div class="video-preview">
                         <div class="video-icon"><i class="fas fa-plus"></i></div>
                     </div>
@@ -262,7 +250,7 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-status video-status" aria-live="polite">Video 1 of 5</div>
+            <div class="gallery-status video-status" aria-live="polite">Video 1 of 4</div>
             <div class="gallery-controls">
                 <button type="button" class="gallery-btn btn-secondary video-btn" data-action="prev"
                     aria-label="Previous video" aria-controls="video-carousel">Previous</button>
@@ -278,8 +266,6 @@
                     aria-selected="false" aria-controls="video-carousel" aria-label="View video 3">3</button>
                 <button type="button" class="gallery-indicator video-indicator" data-index="3" role="tab"
                     aria-selected="false" aria-controls="video-carousel" aria-label="View video 4">4</button>
-                <button type="button" class="gallery-indicator video-indicator" data-index="4" role="tab"
-                    aria-selected="false" aria-controls="video-carousel" aria-label="View video 5">5</button>
             </div>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="videos.html" class="btn-primary">View All Videos</a>
@@ -594,13 +580,32 @@
                 videoStatus.textContent = `Video ${currentVideoIndex + 1} of ${videoSlides.length}`;
             };
 
+            const pauseAllVideos = () => {
+                videoSlides.forEach((slide) => {
+                    const video = slide.querySelector('video');
+                    if (video && !video.paused) {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                });
+            };
+
             const setVideoSlide = (index) => {
                 if (!videoSlides.length) return;
                 currentVideoIndex = ((index % videoSlides.length) + videoSlides.length) % videoSlides.length;
+                pauseAllVideos();
                 videoSlides.forEach((slide, i) => {
                     const active = i === currentVideoIndex;
                     slide.classList.toggle('active', active);
                     slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+                    if (active) {
+                        const video = slide.querySelector('video');
+                        if (video) {
+                            video.play().catch(() => {
+                                // autoplay may be blocked; user can manually start playback
+                            });
+                        }
+                    }
                 });
                 videoIndicators.forEach((button, i) => {
                     const active = i === currentVideoIndex;
