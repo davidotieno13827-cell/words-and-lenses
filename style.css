@@ -259,7 +259,7 @@ body {
     letter-spacing: 0.7px;
     text-transform: uppercase;
     font-weight: 600;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* --- BUTTONS --- */
@@ -293,6 +293,35 @@ body {
 /* --- SECTIONS & TYPOGRAPHY --- */
 .section-layout {
     padding: 100px 0;
+}
+
+.about-section {
+    position: relative;
+    background-image: url('travel1.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 8, 10, 0.65);
+    z-index: 1;
+}
+
+.about-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.about-section .section-header h2,
+.about-section .accent-text,
+.about-section .text-column {
+    color: #f1f1f1;
 }
 
 .bg-alt {
