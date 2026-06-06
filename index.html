@@ -46,6 +46,11 @@
 
     <section class="hero reveal">
         <div class="hero-container">
+            <div class="hero-video-wrapper" aria-hidden="true">
+                <video class="hero-bg-video" autoplay muted loop playsinline>
+                    <source src="afrostate.mp4" type="video/mp4">
+                </video>
+            </div>
             <div class="hero-content">
                 <span class="premium-badge">FREELANCE PHOTOGRAPHY & WRITTEN VERSE</span>
                 <h1 class="hero-title">Capturing Freedom Across The Open Road</h1>
@@ -459,14 +464,23 @@
             }, { threshold: 0.1 });
             document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
-            const gallerySlides = document.querySelectorAll('.gallery-slide');
-            const galleryButtons = document.querySelectorAll('.gallery-slider .gallery-btn');
-            const galleryIndicators = document.querySelectorAll('.gallery-slider .gallery-indicator');
+            const gallerySection = document.getElementById('gallery');
+            const gallerySlides = gallerySection.querySelectorAll('.gallery-slide');
+            const galleryButtons = gallerySection.querySelectorAll('.gallery-controls .gallery-btn');
+            const galleryIndicators = gallerySection.querySelectorAll('.gallery-indicators .gallery-indicator');
             let currentGalleryIndex = 0;
 
-            const galleryStatus = document.querySelector('.gallery-status');
-            const gallerySlider = document.querySelector('.gallery-slider');
+            const galleryStatus = gallerySection.querySelector('.gallery-status');
+            const gallerySlider = gallerySection.querySelector('.gallery-slider');
             const contrastToggle = document.getElementById('contrastToggle');
+
+            const videoSection = document.getElementById('videos');
+            const videoSlides = videoSection.querySelectorAll('.video-slide');
+            const videoButtons = videoSection.querySelectorAll('.gallery-controls .video-btn');
+            const videoIndicators = videoSection.querySelectorAll('.gallery-indicators .video-indicator');
+            let currentVideoIndex = 0;
+            const videoStatus = videoSection.querySelector('.video-status');
+            const videoSlider = videoSection.querySelector('.video-slider');
 
             const updateGalleryStatus = () => {
                 if (!galleryStatus || !gallerySlides.length) return;
@@ -523,13 +537,6 @@
                     setGallerySlide(Number(button.dataset.index));
                 });
             });
-
-            const videoSlides = document.querySelectorAll('.video-slide');
-            const videoButtons = document.querySelectorAll('.video-btn');
-            const videoIndicators = document.querySelectorAll('.video-indicator');
-            let currentVideoIndex = 0;
-            const videoStatus = document.querySelector('.video-status');
-            const videoSlider = document.querySelector('.video-slider');
 
             const updateVideoStatus = () => {
                 if (!videoStatus || !videoSlides.length) return;
