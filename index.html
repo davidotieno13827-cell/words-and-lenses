@@ -23,32 +23,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preload" href="afrostate.mp4" as="video">
     <link rel="stylesheet" href="style.css?v=9">
-    <script>
-        (function () {
-            // Fetch the canonical raw index on GitHub and compare a version marker.
-            // If the remote has the latest marker but this page does not, force a cachebust reload.
-            var REMOTE_INDEX = 'https://raw.githubusercontent.com/davidotieno13827-cell/words-and-lenses/main/index.html';
-            var VERSION_MARKER = 'Live site version 9';
-            try {
-                fetch(REMOTE_INDEX, { cache: 'no-store', credentials: 'omit' })
-                    .then(function (r) { return r.text(); })
-                    .then(function (text) {
-                        if (text && text.indexOf(VERSION_MARKER) !== -1 && document.documentElement.innerHTML.indexOf(VERSION_MARKER) === -1) {
-                            var separator = location.search ? '&' : '?';
-                            location.replace(location.href + separator + 'cachebust=1');
-                        }
-                    }).catch(function () { /* ignore fetch errors */ });
-            } catch (e) { /* ignore */ }
-        })();
-    </script>
 </head>
 
 <body>
 
-    <div id="top-interstitial" class="top-interstitial" role="dialog" aria-live="polite"
+    <div id="top-interstitial" class="top-interstitial hidden" role="dialog" aria-live="polite"
         aria-label="Site update available">
         <div class="top-interstitial-inner container">
-            <div class="interstitial-text">Live v8 is available — press <strong>Reload</strong> to view latest changes.
+            <div class="interstitial-text">A newer version of this site is available — press <strong>Reload</strong> to
+                update.
             </div>
             <div class="interstitial-actions">
                 <button id="interstitial-reload" class="btn-primary">Reload</button>
@@ -646,35 +629,64 @@
             updateGalleryStatus();
             updateVideoStatus();
 
-            // Top interstitial: reload / dismiss behaviour
-            (function () {
-                const interstitial = document.getElementById('top-interstitial');
-                const reloadBtn = document.getElementById('interstitial-reload');
-                const dismissBtn = document.getElementById('interstitial-dismiss');
+            const UPDATE_MARKER = 'Live site version 9';
+            const REMOTE_INDEX = 'https://raw.githubusercontent.com/davidotieno13827-cell/words-and-lenses/main/index.html';
+            const interstitial = document.getElementById('top-interstitial');
+            const reloadBtn = document.getElementById('interstitial-reload');
+            const dismissBtn = document.getElementById('interstitial-dismiss');
+            const interstitialText = interstitial && interstitial.querySelector('.interstitial-text');
+
+            function hideInterstitial() {
+                if (interstitial) interstitial.classList.add('hidden');
+            }
+
+            function showInterstitial(versionText) {
+                if (!interstitial || !interstitialText) return;
                 try {
                     const prev = parseInt(localStorage.getItem('dismissedInterstitial') || '0', 10) || 0;
-                    if (Date.now() - prev < (10 * 60 * 1000)) {
-                        interstitial && interstitial.classList.add('hidden');
-                    }
-                } catch (e) { /* ignore */ }
+                    if (Date.now() - prev < 10 * 60 * 1000) return;
+                } catch (e) {
+                    // ignore localStorage errors
+                }
+                interstitialText.innerHTML = versionText
+                    ? `A newer version is available: <strong>${versionText}</strong>. Press <strong>Reload</strong> to update.`
+                    : 'A newer version of this site is available — press <strong>Reload</strong> to update.';
+                interstitial.classList.remove('hidden');
+            }
 
+            function checkForUpdate() {
                 if (!interstitial) return;
-                // auto-hide after a short delay so it doesn't block UX
-                const autoHide = setTimeout(() => interstitial.classList.add('hidden'), 8000);
+                fetch(REMOTE_INDEX, { cache: 'no-store', credentials: 'omit' })
+                    .then(function (response) { return response.text(); })
+                    .then(function (text) {
+                        var match = text.match(/Live site version \d+/);
+                        if (match && match[0] !== UPDATE_MARKER) {
+                            showInterstitial(match[0]);
+                        }
+                    }).catch(function () {
+                        // ignore fetch failures; leave banner hidden
+                    });
+            }
 
-                reloadBtn && reloadBtn.addEventListener('click', function () {
+            if (reloadBtn) {
+                reloadBtn.addEventListener('click', function () {
                     try { localStorage.removeItem('dismissedInterstitial'); } catch (e) { }
-                    const url = new URL(location.href);
+                    var url = new URL(location.href);
                     url.searchParams.set('cachebust', Date.now());
                     location.href = url.toString();
                 });
+            }
 
-                dismissBtn && dismissBtn.addEventListener('click', function () {
-                    interstitial.classList.add('hidden');
+            if (dismissBtn) {
+                dismissBtn.addEventListener('click', function () {
+                    hideInterstitial();
                     try { localStorage.setItem('dismissedInterstitial', Date.now()); } catch (e) { }
-                    clearTimeout(autoHide);
                 });
-            })();
+            }
+
+            hideInterstitial();
+            checkForUpdate();
+            setInterval(checkForUpdate, 30000);
         });
 
         const form = document.getElementById('bookingForm');
