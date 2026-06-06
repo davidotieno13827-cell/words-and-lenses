@@ -25,10 +25,20 @@
     <link rel="stylesheet" href="style.css?v=7">
     <script>
         (function () {
-            if (!location.search.includes('cachebust')) {
-                var separator = location.search ? '&' : '?';
-                location.replace(location.href + separator + 'cachebust=1');
-            }
+            // Fetch the canonical raw index on GitHub and compare a version marker.
+            // If the remote has the latest marker but this page does not, force a cachebust reload.
+            var REMOTE_INDEX = 'https://raw.githubusercontent.com/davidotieno13827-cell/words-and-lenses/main/index.html';
+            var VERSION_MARKER = 'Live site version 7';
+            try {
+                fetch(REMOTE_INDEX, { cache: 'no-store', credentials: 'omit' })
+                    .then(function (r) { return r.text(); })
+                    .then(function (text) {
+                        if (text && text.indexOf(VERSION_MARKER) !== -1 && document.documentElement.innerHTML.indexOf(VERSION_MARKER) === -1) {
+                            var separator = location.search ? '&' : '?';
+                            location.replace(location.href + separator + 'cachebust=1');
+                        }
+                    }).catch(function () { /* ignore fetch errors */ });
+            } catch (e) { /* ignore */ }
         })();
     </script>
 </head>
@@ -58,6 +68,7 @@
 
     <section class="hero reveal">
         <div class="hero-container">
+            <div class="top-version-badge">Live v7</div>
             <div class="hero-video-wrapper" aria-hidden="true">
                 <video class="hero-bg-video" autoplay muted loop playsinline preload="auto" poster="soulandsolace.jpeg">
                     <source src="afrostate.mp4" type="video/mp4">
